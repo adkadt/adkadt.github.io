@@ -29,7 +29,7 @@ url: "https://abrandt.xyz" # the base hostname & protocol for your site, e.g. ht
 github_username:  adkadt
 
 # Build settings
-theme: minima
+theme: architect
 plugins:
   - jekyll-feed
 
