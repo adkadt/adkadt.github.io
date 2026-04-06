@@ -10,21 +10,17 @@ export default defineConfig({
     integrations: [
         starlight({
             title: 'Personal Portfolio',
-            social: {
-                github: 'https://github.com/adkadt',
-            },
+            social: [
+                {
+                    label: 'GitHub',
+                    icon: 'github',
+                    href: 'https://github.com/adkadt',
+                },
+            ],
             sidebar: [
                 {
                     label: 'Home',
                     link: '/'
-                },
-                {
-                    label: 'About',
-                    link: '/about'
-                },
-                {
-                    label: 'Projects',
-                    link: '/projects'
                 },
                 {
                     label: 'Contact',

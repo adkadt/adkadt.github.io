@@ -1,0 +1,35 @@
+---
+title: Adam's Engineering Portfolio
+description: Computer Science & Mechanical Engineering Portfolio
+template: splash
+hero:
+  tagline: Bridging the gap between software and physical systems.
+  actions:
+    - text: View Software Projects
+      link: /software/breadbot/
+      icon: right-arrow
+      variant: primary
+    - text: View Mechanical Builds
+      link: /mechanical/rocketry/
+      icon: rocket
+      variant: secondary
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Core Focus Areas
+
+<CardGrid stagger>
+    <Card title="Computer Vision & Robotics" icon="setting">
+        Developing systems like Daydream using Raspberry Pi, OpenCV, and Python to bring environmental awareness to hardware.
+    </Card>
+    <Card title="Mechanical Design" icon="puzzle">
+        Managing project budgets and structural integrity for model rocketry, utilizing SolidWorks for precision modeling and assembly.
+    </Card>
+    <Card title="System Administration" icon="laptop">
+        Configuring Linux environments, managing game servers, writing systemd services, and handling bare-metal hardware deployments.
+    </Card>
+    <Card title="Automation Tools" icon="document">
+        Building scalable integrations like Breadbot in Python to handle community management and task automation.
+    </Card>
+</CardGrid>
