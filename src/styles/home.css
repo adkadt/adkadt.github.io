@@ -1,0 +1,16 @@
+.custom-home .hero::before {
+  content: "";
+  display: block;
+  width: 100vw;                  /* full viewport width */
+  height: 350px;
+  background-image: url('/banner.jpg');
+  background-size: cover;
+  background-position: center;
+
+  /* center it relative to viewport */
+  margin-left: calc(50% - 50vw);
+
+  /* remove these */
+  border-radius: 0;
+  margin-bottom: 0;
+}

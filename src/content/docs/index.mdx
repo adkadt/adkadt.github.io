@@ -1,22 +1,26 @@
 ---
-title: Welcome to My Portfolio
-description: A personal portfolio showcasing my projects and experience.
+title: Home
 template: splash
+pageClass: custom-home
 hero:
-  tagline: I'm a software engineer passionate about building great experiences.
+  title: Computer Science & Mechanical Engineering
+  tagline: Bridging the gap between computer science and mechanical engineering through autonomous robotics, aerospace testing, and systems architecture.
   image:
-    file: ../../assets/astro.svg
-  actions:
-    - text: Contact Me
-      link: /contact
-      icon: right-arrow
-      variant: primary
-    - text: View my GitHub
-      link: https://github.com/adkadt
-      icon: external
-      variant: minimal
+    alt: Profile picture
+    file: ../../assets/profile.png
 ---
 
-## About Me
+import { Card, CardGrid } from '@astrojs/starlight/components';
+import '../../styles/home.css';
 
-Welcome to my portfolio! You can add any Markdown or MDX content down here to introduce yourself, showcase your projects, or list your skills.
+## Engineering Domains
+
+<CardGrid stagger>
+  <Card title="Autonomous Robotics" icon="setting">
+    Development of competitive VEX U robotics control systems and pathing algorithms.
+  </Card>
+  
+  <Card title="Rocketry & Propulsion" icon="rocket">
+    Systems architecture for high-power rocketry and hardware-in-the-loop data ingestion.
+  </Card>
+</CardGrid>

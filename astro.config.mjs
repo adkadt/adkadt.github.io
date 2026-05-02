@@ -1,32 +1,41 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
-import starlight from "@astrojs/starlight";
+import starlight from '@astrojs/starlight';
+import starlightBlog from 'starlight-blog';
 
-
-// https://astro.build/config
 export default defineConfig({
-    site: 'https://adkadt.github.io',
-
     integrations: [
         starlight({
-            title: 'Personal Portfolio',
-            social: [
-                {
-                    label: 'GitHub',
-                    icon: 'github',
-                    href: 'https://github.com/adkadt',
-                },
+        title: 'Adam K Brandt',
+        favicon: '/favicon.svg',
+            
+        social: [
+            { icon: 'github', label: 'GitHub', href: 'https://github.com/adkadt' },
+        ],
+        plugins: [
+            // starlightBlog({
+            //   title: 'Blog',
+            // }),
+        ],
+        sidebar: [
+            {
+            label: 'About Me',
+            items: [
+                { label: 'Contact', link: '/about/contact/' },
             ],
-            sidebar: [
-                {
-                    label: 'Home',
-                    link: '/'
-                },
-                {
-                    label: 'Contact',
-                    link: '/contact'
-                },
-            ],
+            },
+            // {
+            //   label: 'Rocketry',
+            //   items: [
+            //     { label: 'Lti Software Management', link: '/rocketry/lti-software/' },
+            //   ],
+            // },
+            // {
+            //   label: 'Robotics',
+            //   items: [
+            //     { label: 'Pathing Algorithms', link: '/robotics/pathing/' },
+            //   ],
+            // },
+        ],
         }),
     ],
 });
