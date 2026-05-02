@@ -10,6 +10,7 @@ export default defineConfig({
             
         social: [
             { icon: 'github', label: 'GitHub', href: 'https://github.com/adkadt' },
+            { icon: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/adam-k-brandt/' },
         ],
         plugins: [
             // starlightBlog({
@@ -18,23 +19,11 @@ export default defineConfig({
         ],
         sidebar: [
             {
-            label: 'About Me',
-            items: [
-                { label: 'Contact', link: '/about/contact/' },
-            ],
+                label: 'About Me',
+                items: [
+                    { label: 'Contact', link: '/about/contact/' },
+                ],
             },
-            // {
-            //   label: 'Rocketry',
-            //   items: [
-            //     { label: 'Lti Software Management', link: '/rocketry/lti-software/' },
-            //   ],
-            // },
-            // {
-            //   label: 'Robotics',
-            //   items: [
-            //     { label: 'Pathing Algorithms', link: '/robotics/pathing/' },
-            //   ],
-            // },
         ],
         }),
     ],
