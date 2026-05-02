@@ -13,19 +13,6 @@ export default defineConfig({
             { icon: 'github', label: 'GitHub', href: 'https://github.com/adkadt' },
             { icon: 'linkedin', label: 'LinkedIn', href: 'https://linkedin.com/in/adam-k-brandt/' },
         ],
-        plugins: [
-            // starlightBlog({
-            //   title: 'Blog',
-            // }),
-        ],
-        sidebar: [
-            {
-                label: 'About Me',
-                items: [
-                    { label: 'Contact', link: '/contact/' },
-                ],
-            },
-        ],
         }),
     ],
 });
