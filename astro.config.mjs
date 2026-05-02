@@ -10,7 +10,7 @@ export default defineConfig({
             
         social: [
             { icon: 'github', label: 'GitHub', href: 'https://github.com/adkadt' },
-            { icon: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/adam-k-brandt/' },
+            { icon: 'linkedin', label: 'LinkedIn', href: 'https://linkedin.com/in/adam-k-brandt/' },
         ],
         plugins: [
             // starlightBlog({
