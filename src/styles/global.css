@@ -1,0 +1,31 @@
+html {
+    scroll-behavior: smooth;
+}
+
+input:focus, 
+textarea:focus,
+button:focus-visible {
+  outline: none;
+  border-color: var(--sl-color-text-accent) !important;
+  box-shadow: 0 0 0 1px var(--sl-color-text-accent);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.action:hover,
+.actions a:hover,
+button:hover,
+.sl-link-card:hover {
+  cursor: pointer;
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  transition: transform 0.2s ease, filter 0.2s ease;
+  box-shadow: var(--sl-shadow-md);
+}
+
+.action:active,
+.actions a:active,
+button:active,
+.sl-link-card:active {
+  transform: translateY(0);
+  filter: brightness(0.9);
+}

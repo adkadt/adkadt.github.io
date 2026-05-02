@@ -7,6 +7,7 @@ export default defineConfig({
         starlight({
         title: 'Adam K Brandt',
         favicon: '/favicon.svg',
+        customCss: ['./src/styles/global.css'],
             
         social: [
             { icon: 'github', label: 'GitHub', href: 'https://github.com/adkadt' },
