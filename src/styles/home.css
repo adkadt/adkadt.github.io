@@ -22,7 +22,7 @@
   background-position: center;
   margin-left: calc(50% - 50vw);
   margin-bottom: 1rem;
-  background-image: url('/banner.jpg');
+  background-image: url('/banner.webp');
   opacity: 0.7;
 
   -webkit-mask-image: linear-gradient(to bottom, black 0%, black 75%, transparent 100%);
