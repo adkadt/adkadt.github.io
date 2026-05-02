@@ -22,7 +22,7 @@ export default defineConfig({
             {
                 label: 'About Me',
                 items: [
-                    { label: 'Contact', link: '/about/contact/' },
+                    { label: 'Contact', link: '/contact/' },
                 ],
             },
         ],
