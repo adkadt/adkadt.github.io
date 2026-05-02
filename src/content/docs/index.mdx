@@ -1,26 +1,40 @@
 ---
 title: Home
 template: splash
-pageClass: custom-home
 hero:
-  title: Computer Science & Mechanical Engineering
-  tagline: Bridging the gap between computer science and mechanical engineering through autonomous robotics, aerospace testing, and systems architecture.
+  title: Adam K Brandt
+  tagline: 'Computer Science & Mechanical Engineering<br/><br/><span style="font-size: 0.9em; opacity: 0.9;">Bridging the gap between the two disciplines through autonomous robotics, aerospace testing, and systems architecture.</span>'
   image:
     alt: Profile picture
     file: ../../assets/profile.png
+  actions:
+    - text: Contact
+      link: /about/contact
+      icon: right-arrow
+      variant: primary
+    - text: LinkedIn
+      link: https://www.linkedin.com/in/adam-k-brandt/
+      icon: linkedin
+      variant: minimal
+    - text: GitHub
+      link: https://github.com/adkadt
+      icon: github
+      variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
 import '../../styles/home.css';
 
-## Engineering Domains
+## Active Projects
 
-<CardGrid stagger>
-  <Card title="Autonomous Robotics" icon="setting">
-    Development of competitive VEX U robotics control systems and pathing algorithms.
-  </Card>
-  
-  <Card title="Rocketry & Propulsion" icon="rocket">
-    Systems architecture for high-power rocketry and hardware-in-the-loop data ingestion.
-  </Card>
+<CardGrid>
+  <LinkCard
+    title="Autonomous Robotics" 
+    description="Development of autonomous pathing, odometry, and embedded control logic for VEX U competition robots."
+  />
+
+  <LinkCard
+    title="Rocketry & Propulsion Testing" 
+    description="Development of custom data ingestion and control software for high-power liquid engine testing."
+  />
 </CardGrid>
