@@ -5,34 +5,67 @@ prev: false
 next: false
 ---
 
-**1st Place Overall Winner -- BloomKnights Hackathon**
+<div style="text-align: center;">
+**1st Place Overall Winner - BloomKnights Hackathon**
 
 **Links:** [GitHub Repository](https://github.com/its-agn/dave) | [Devpost Submission](https://devpost.com/software/dave-dynamic-acronym-volleyball-evaluator)
+</div>
 
-DAVE (Dynamic Acronym Volleyball Evaluator) is a wearable hardware motion tracker designed to act as an volleyball coach to help improve swing accuracy and improvement.
+![Dashboard displaying 3D swing replay](../../../assets/dave-frontend.webp)
+<div style="text-align: center;">
+*The DAVE dashboard featuring a 3D swing reconstruction*
+</div>
+
+
+DAVE (Dynamic Acronym Volleyball Evaluator) is a wearable hardware motion tracker designed to act as a volleyball coach to help improve accuracy and form.
 
 ---
 
 ## System Architecture
 
+To get quick feedback of a volleyball swing, we offloaded the kinematic reconstruction and machine learning inference from the wearable to a separate FastAPI server. This architecture blended low-level embedded hardware with a modern AI. We had three distinct parts: physical data capture, backend processing, and frontend visualization.
+
+```mermaid
+flowchart LR
+    A[Two MPU6050 IMUs] --> B[ESP32 firmware]
+    B -->|POST /api/swing| C[FastAPI bridge]
+    C --> D[Validation and preprocessing]
+    D --> E[Random-forest classifier]
+    E --> F[Website data files]
+    F --> G[Next.js dashboard]
+    F --> H[Gemini coaching]
+```
+
 ### Hardware & Electronics
+
+![The Hardware](../../../assets/dave-hardware.webp)
+<div style="text-align: center;">
+*The arm sleeve with attached IMU sensors and ESP32 microcontroller*
+</div>
+
+
+The wearable was driven by an ESP32 Dev Kit. It interfaced with two MPU6050 IMUs positioned on the user's forearm and bicep. The embedded firmware actively calibrates both IMUs, detects swings through velocity thresholds and records telemetry at 200 samples per second.
 
 ### Data Pipeline & Machine Learning
 
+Once the physical motion is captured, the ESP32 posts a JSON packet to the Python/FastAPI backend. The data is validated and reconstructed into the absolute positions of the shoulder, elbow, and wrist. The data is passed to the trained Random-Forest classifier to evaluate the swing.
+
 ### The Dashboard & AI Coaching
 
-
----
-
-## Overcoming Engineering Challenges
+The final processed data files are sent to the dashboard. The frontend shows an interactive 3D replay of the user's swing. In addition, the frame-by-frame processed motion data is sent to the Gemini API for personalized, conversational coaching and feedback.
 
 ---
 
 ## My Specific Contributions
 
+During the hackathon, I primarily focused on the embedded hardware architecture and networking.
++ **Electronics Integration:** Wired the ESP32 microcontroller and MPU6050 sensors into the wearable.
++ **Network Optimization:** Created the HTTP streaming logic and custom two-pass serialization to overcome microcontroller memory constraints.
++ **Firmware Design:** Handled the initial C++ firmware architecture.
+
 ## The Team - BAAA
-This 12-hour build was made possible by an incredible cross-disciplinary team of Computer Science and Mechanical Engineering students:
-* [Brandon Stile](https://www.linkedin.com/in/brandon-stile/) - Frontend & Gemmini API Integration
-* [Alexander Nardi](https://linkedin.com/in/alexander-nardi/) - Custom ML Implementation
-* [Aiden O'Conner](https://linkedin.com/in/aidenoconnor55/) - Hardware Design & Sensor Fusion Implementaion
-* [Adam Brandt](https://linkedin.com/in/adam-k-brandt) - Embedded Electronics & Networking
+This 12-hour build was made possible by an incredible team of Computer Science and Mechanical Engineering students:
++ [Brandon Stile](https://www.linkedin.com/in/brandon-stile/) - Frontend & Gemini API Integration
++ [Alexander Nardi](https://linkedin.com/in/alexander-nardi/) - Custom ML Implementation
++ [Aiden O'Conner](https://linkedin.com/in/aidenoconnor55/) - Hardware Design & Sensor Fusion Implementation
++ [Adam Brandt](https://linkedin.com/in/adam-k-brandt) - Embedded Electronics & Networking
