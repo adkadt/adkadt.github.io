@@ -12,11 +12,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.38.4",
-    "astro": "^6.2.1",
+    "@astrojs/starlight": "^0.41.7",
+    "astro": "^7.1.6",
     "astro-mermaid": "^2.1.0",
     "mermaid": "^11.16.0",
-    "starlight-blog": "^0.26.1"
+    "starlight-blog": "^0.28.0"
   },
   "overrides": {
     "esbuild": "^0.28.1"
