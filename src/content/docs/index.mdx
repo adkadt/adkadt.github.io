@@ -31,13 +31,29 @@ hero:
 import { LinkCard, CardGrid } from '@astrojs/starlight/components';
 import '../../styles/home.css';
 
-## Projects
+## Featured Projects
 
 <CardGrid>
   <LinkCard
     title="DAVE (AI Volleyball Evaluator)" 
     description="1st Place Overall Winner @ BloomKnights Hackathon. An AI-powered sports wearable."
     href="/hackathons/dave"
+  />
+
+  <LinkCard
+    title="AVES Pigeon GPS/LoRa Tracker" 
+    description="A custom GPS and LoRa tracking board designed for telemetry and recovery of high-power rockets."
+    href="/rocketry/aves/pigeon"
+  />
+
+</CardGrid>
+
+## Engineering Interests
+<CardGrid>
+  <LinkCard
+    title="Hackathons" 
+    description="Hackathon projects, rapid prototyping, and competition write-ups covering hardware, software, and AI systems."
+    href="/hackathons"
   />
 
   <LinkCard
@@ -48,7 +64,7 @@ import '../../styles/home.css';
 
   <LinkCard
     title="Rocketry & Propulsion Testing [TBA]" 
-    description="Development of custom data ingestion and control software for high-power liquid engine testing."
+    description="Flight avionics, telemetry systems, and liquid engine testing for experimental high-power rocketry."
     href="/rocketry"
   />
 
