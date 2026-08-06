@@ -4,9 +4,13 @@ import starlight from '@astrojs/starlight';
 import starlightBlog from 'starlight-blog';
 import mermaid from 'astro-mermaid';
 
+import sitemap from '@astrojs/sitemap';
+
 export default defineConfig({
+    site: 'https://abrandt.xyz',
     integrations: [
         mermaid(),
+        sitemap(),
         starlight({
         title: 'Adam K Brandt',
         favicon: '/favicon.svg',
