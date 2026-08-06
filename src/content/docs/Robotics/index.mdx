@@ -1,10 +1,58 @@
 ---
-title: Robotics Projects (TBA)
+title: Competition Robotics @ UCF
+description: Autonomous robotics, controls, computer vision, and embedded systems.
 sidebar: 
   label: Robotics Overview
   order: 0
-  badge: 'TBA'
 prev: false
 next: false
 ---
 
+![](../../../assets/vexu26worlds_personal_wide_crop.jpeg)
+
+Robotics and autonomous systems have been one of my primary interests since joining my first robotics team in high school. I initially focused on mechanical design but as I transitioned into university-level robotics I shifted toward embedded systems, controls, and autonomous robotics.
+
+# Daydream Robotics
+
+In August 2025, I joined [Daydream Robotics](https://www.instagram.com/daydreamvexu/) which is one of the [VEXU](https://www.vexrobotics.com/v5/competition/vurc) robotics competition teams within the [Robotics Club of Central Florida (RCCF)](https://rccf.club) at the [University of Central Florida](https://ucf.edu). VEXU is the University-level of the VEXv5 robotics competitions for high schools. Each season, a completely new game is introduced, requiring teams to design, build, and program entirely new robots to solve a unique set of challenges. Unlike the high school competition, university teams develop two robots that operate together as a single alliance throughout each match.
+
+I joined the software team, where I focused on developing the robot's autonomous systems. Throughout the season my work ranged from integrating embedded computer vision on a [Raspberry Pi](https://www.raspberrypi.com/) to developing non-linear trajectory-following algorithms used during autonoumous operation.
+
+# Robot Architecture
+
+Although each season requires a completley new robot, the software achitechure stays mostly consistent. While the specific implementation evolves from year to yearm the software is generally organized into independent subsystems responsible for perception, movement, and decision making.
+
+The diagram below shows the architecture of the 2025-2026 robot, which used a Raspberry Pi running TensorFlow Lite to perform vision inference before sending the results to the VEX brain over a custom serial protocol.
+
+```mermaid
+flowchart LR
+
+Camera --> Pi["Raspberry Pi
+TensorFlow Lite"]
+
+Pi -->|"Serial"| Brain["VEX Brain"]
+
+Brain --> Vision["Autonomous State Machine"]
+
+Vision --> Motion["Motion Planning"]
+
+Motion --> Drive["Motor Controllers"]
+```
+
+# Embedded Vision
+- Raspberry Pi Integration
+- TensorFlow Lite
+- Serial Communication
+- Performance & Reliability
+
+# Motion Planning & Control
+
+## Odometry
+
+## PID
+
+## Pure Pursuit
+
+# Challenges
+
+# Lessons Learned
