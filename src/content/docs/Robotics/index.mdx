@@ -8,21 +8,24 @@ prev: false
 next: false
 ---
 
+import daydreamLogo from "../../../assets/daydream_logo.webp";
+
 ![](../../../assets/vexu26worlds_personal_wide_crop.jpeg)
 
 Robotics and autonomous systems have been one of my primary interests since joining my first robotics team in high school. I initially focused on mechanical design but as I transitioned into university-level robotics I shifted toward embedded systems, controls, and autonomous robotics.
 
-# Daydream Robotics
+## Daydream Robotics
 
-In August 2025, I joined [Daydream Robotics](https://www.instagram.com/daydreamvexu/) which is one of the [VEXU](https://www.vexrobotics.com/v5/competition/vurc) robotics competition teams within the [Robotics Club of Central Florida (RCCF)](https://rccf.club) at the [University of Central Florida](https://ucf.edu). VEXU is the University-level of the VEXv5 robotics competitions for high schools. Each season, a completely new game is introduced, requiring teams to design, build, and program entirely new robots to solve a unique set of challenges. Unlike the high school competition, university teams develop two robots that operate together as a single alliance throughout each match.
+In August 2025, I joined [Daydream Robotics](https://www.instagram.com/daydreamvexu/), which is one of the [VEXU](https://www.vexrobotics.com/v5/competition/vurc) robotics competition teams within the [Robotics Club of Central Florida (RCCF)](https://rccf.club) at the [University of Central Florida](https://ucf.edu). VEX U is the university-level of the VEX V5 robotics competition where each season, a completely new game is introduced, requiring teams to design, build, and program entirely new robots to solve a unique set of challenges.
 
-I joined the software team, where I focused on developing the robot's autonomous systems. Throughout the season my work ranged from integrating embedded computer vision on a [Raspberry Pi](https://www.raspberrypi.com/) to developing non-linear trajectory-following algorithms used during autonoumous operation.
+I joined the software team, where I focused on developing the robot's autonomous systems. Throughout the season my work ranged from integrating embedded computer vision on a [Raspberry Pi](https://www.raspberrypi.com/) to developing nonlinear trajectory-following algorithms used during autonomous operation.
 
-# Robot Architecture
 
-Although each season requires a completley new robot, the software achitechure stays mostly consistent. While the specific implementation evolves from year to yearm the software is generally organized into independent subsystems responsible for perception, movement, and decision making.
+## System Architecture
 
-The diagram below shows the architecture of the 2025-2026 robot, which used a Raspberry Pi running TensorFlow Lite to perform vision inference before sending the results to the VEX brain over a custom serial protocol.
+Although each season requires a completely new robot, the software system stays mostly consistent. While the specific implementation evolves from year to year the software is generally organized into independent subsystems responsible for perception, movement, and decision making.
+
+The diagram below shows the architecture of the 2025-2026 robot, which used a Raspberry Pi running [TensorFlow Lite](https://www.tensorflow.org/lite/) to perform vision inference before sending the results to the VEX brain over a custom serial protocol.
 
 ```mermaid
 flowchart LR
@@ -34,25 +37,28 @@ Pi -->|"Serial"| Brain["VEX Brain"]
 
 Brain --> Vision["Autonomous State Machine"]
 
-Vision --> Motion["Motion Planning"]
+Vision --> Motion["Motion Planning & Control"]
 
 Motion --> Drive["Motor Controllers"]
 ```
 
-# Embedded Vision
+## Embedded Vision
+
+Our 2025-2026 robot used a Raspberry Pi running an embedded Tensorflow Lite object detection model. The Raspberry Pi detected game elements and transmitted their locations to the VEX brain, allowing for autonomous paths to react to the current field condition. My work focused on developing the software pipeline that handled camera capture, model inference, and data communication with the robot. 
+
 - Raspberry Pi Integration
 - TensorFlow Lite
 - Serial Communication
 - Performance & Reliability
 
-# Motion Planning & Control
+## Motion Planning & Control
 
-## Odometry
+### Odometry
 
-## PID
+### PID
 
-## Pure Pursuit
+### Pure Pursuit
 
-# Challenges
+## Challenges
 
-# Lessons Learned
+## Lessons Learned
