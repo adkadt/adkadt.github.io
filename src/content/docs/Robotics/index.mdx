@@ -75,3 +75,18 @@ Ramsete is a nonlinear trajectory-tracking controller that uses the robot's dime
 My implementation extends the standard controller with features such as reverse path tracking, configurable lookahead sampling, and curvature-based velocity limiting. While it is not currently our primary competition controller, it remains part of the motion control stack for testing and future development.
 
 ## Serial Communication
+**The Quest for Proper Data Transmission**
+
+Reliable communication between the Raspberry Pi and the VEX Brain proved to be one of the more challenging aspects of the vision system. The easiest communication method we could find with the VEX brain was using serial. We chose this because it’s low level and fast. We found out that the VEX brain redirects stdin and stdout to its serial port so we utilized that for communication.
+
+### Attempt 1: Initial Request/Response Protocol
+
+Originally we started out with a three way handshake method. The VEX brain would send a request message to the RPi. The RPi would then get the latest frame, run it through the model, parse the output, and return all the objects. When it returned all objects, it would first send a message with the number of objects found in the frame, then send each object one by one in their own message. Afterwards, the VEX brain would respond back to the RPi to confirm it received the frame data. This approach was much slower than we expected. This was due to all the messages back and forth and also waiting for the model to run.
+
+### Attempt 2: Streaming Everything
+
+For speed we decided to switch to a stream method. Essentially, the RPi is constantly running the model, and sending the data to the VEX brain. The VEX brain would never send any data to the RPi. Instead the VEX brain would just constantly read from serial. We also changed it so that the pi sends the data of all objects in a one line message instead of a separate message for each object. This method was a lot faster, but also turned out to be too fast for the VEX brain. When reading from serial, the oldest unread line is retrieved. The problem was that the RPi would flood that unread buffer faster than the VEX brain could read from it. This caused the VEX brain to be reading older frames as time went on instead of reading the newest frame. Because of limitations with the serial implementation we could not read the most recent line, so we were forced to abandon this method.
+
+### Final Design
+
+Our current method is a combination of the two. The RPi now only responds the closest object of each type instead of all objects in the frame. This helps reduce the amount of data we are moving across serial speeding communication. The VEX, will regularly request the latest frame data from the RPi by sending a specified request message. The RPi is constantly checking for any messages from the VEX brain. If a frame has not been processed in the last 0.5 seconds, it will take a break from checking to process a new frame and store its parsed output. 
