@@ -44,21 +44,34 @@ Motion --> Drive["Motor Controllers"]
 
 ## Embedded Vision
 
-Our 2025-2026 robot used a Raspberry Pi running an embedded Tensorflow Lite object detection model. The Raspberry Pi detected game elements and transmitted their locations to the VEX brain, allowing for autonomous paths to react to the current field condition. My work focused on developing the software pipeline that handled camera capture, model inference, and data communication with the robot. 
+Our 2025-2026 robot used a Raspberry Pi running an embedded TensorFlow Lite object detection model. The Raspberry Pi detected game elements and transmitted their locations to the VEX Brain, allowing for autonomous paths to react to the current field condition. 
 
-- Raspberry Pi Integration
-- TensorFlow Lite
-- Serial Communication
-- Performance & Reliability
+My work focused on developing the software pipeline that handled camera capture, model inference, and serial communication between the Raspberry Pi and the VEX Brain.
 
 ## Motion Planning & Control
 
+The robot's autonomous movement involves localization, feedback control, and nonlinear tracking. I designed a modular motion control framework that separates trajectory tracking from path execution. This architecture allows for multiple controllers to be developed, tested, and interchanged with minimal changes to the rest of the autonomous system.
+
 ### Odometry
+
+To navigate autonomously, the robot must know its position on the field. Unlike GPS navigation, indoor robots require estimating position from onboard sensors.
+
+Our robots use a set of two passive odometry wheels to track the robots lateral movements. Additionally an IMU is used to estimate the orientation of the robot at all times. By combining the data from the odometry wheels and IMU the robot is able to estimate its absolute position on the field.
 
 ### PID
 
+PID controllers are used throughout the robot to provide closed-loop control. They are primarily used for controlling the robot's heading during turns and other rotational movement. We also used to use them for lateral movement but stopped in favor of nonlinear trajectory-following controllers while PID remained responsible for regulating in-place turns.
+
 ### Pure Pursuit
 
-## Challenges
+Pure Pursuit is a nonlinear trajectory-following algorithm that computes a steering command by continuously targeting a point a set distance ahead of the robot along the desired path. This allows the robot to smoothly follow curved paths rather than driving between set waypoints.
 
-## Lessons Learned
+I implemented a custom version of Pure Pursuit with an adapative lookahead distance and motion profiling to improve the path following accuracy through tight turns and during the final approach of the end of a path. The lookahead distance would change based on the speed the robot was traveling which was affected by the curvature of the path.
+
+### Ramsete
+
+Ramsete is a nonlinear trajectory-tracking controller that uses the robot's dimensions to minimize position and heading error. After implementing Pure Pursuit, I began experimenting with a Ramsete controller in an effort to try alternative tracjectory-tracking algorithms. The goal was to see if other controllers could further improve path-following accuracy, especially through tighter turns where Pure Pursuit began to show some limitations. 
+
+My implementation extends the standard controller with features such as reverse path tracking, configurable lookahead sampling, and curvature-based velocity limiting. While it is not currently our primary competition controller, it remains part of the motion control stack for testing and future development.
+
+## Serial Communication
